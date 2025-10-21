@@ -16,16 +16,16 @@
     </div>
     <div class="icons">
       <img
-        src="/image/logo.svg"
-        alt="vue"
+        src="/image/icon/github.png"
+        alt="github"
         class="icon"
-        @click="redirectIcon('vue')"
+        @click="redirectIcon('github')"
       />
       <img
-        src="/image/js.png"
-        alt="js"
+        src="/image/icon/discord.png"
+        alt="discord"
         class="icon"
-        @click="redirectIcon('js')"
+        @click="redirectIcon('discord')"
       />
     </div>
     <v-container class="d-flex justify-center mt-10">
@@ -37,9 +37,8 @@
 <script setup>
 import { ref } from "vue";
 
-let closeBool = false;
-
-const isClosing = ref(false);
+const isClosing = ref(true);
+let closeBool = isClosing.value;
 const isOpening = ref(false);
 
 function close() {
@@ -52,37 +51,36 @@ function close() {
     isClosing.value = false;
     isOpening.value = true;
   }
+  emit("emitPage", { type: "close", value: closeBool });
 }
 
 let thisItem = null;
 const items = ref([
-  { text: "プロフィール", color: "#d5cbcb1f" },
-  { text: "経歴", color: "#d5cbcb1f" },
-  { text: "言語", color: "#d5cbcb1f" },
-  { text: "作品", color: "#d5cbcb1f" },
-  { text: "今後の目標", color: "#d5cbcb1f" },
-  { text: "電話番号", color: "#d5cbcb1f" },
+  { text: "ホーム", color: "#d5cbcb1f", class: "loby" },
+  { text: "プロフィール", color: "#d5cbcb1f", class: "profile" },
+  { text: "経歴", color: "#d5cbcb1f", class: "profile" },
+  { text: "スキル", color: "#d5cbcb1f", class: "profile" },
+  { text: "作品", color: "#d5cbcb1f", class: "opus" },
 ]);
-const emit = defineEmits(["changePage"]);
+
+const emit = defineEmits(["emitPage"]);
 function redirect(text) {
   if (thisItem != null) thisItem.color = "#d5cbcb1f";
   thisItem = items.value.find((i) => i.text == text);
   thisItem.color = "#887f7f";
-  emit("changePage", thisItem.text);
+  emit("emitPage", { type: "changePage", value: thisItem.class });
 }
-redirect("プロフィール");
+redirect("ホーム");
 function redirectIcon(langage) {
   switch (langage) {
-    case "js":
+    case "discord":
       window.location.href =
-        "https://developer.mozilla.org/en-US/docs/Web/JavaScript";
+        "https://discord.com/channels/435276519774879744/1056491582808928316";
       break;
-    case "vue":
-      window.location.href = "https://ja.vuejs.org/";
+    case "github":
+      window.location.href = "https://github.com/koheroke";
   }
 }
-
-const selectedOption = ref("option1");
 </script>
 
 <style scoped>
@@ -94,7 +92,7 @@ const selectedOption = ref("option1");
   z-index: 10;
   width: 20%;
   height: 8%;
-  background-color: #060607;
+  background-color: #f0eeee;
   clip-path: polygon(0 100%, 0 0, 40% 0, 50% 40%, 50% 60%, 40% 100%);
 
   display: flex;

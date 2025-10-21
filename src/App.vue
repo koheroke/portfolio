@@ -1,43 +1,32 @@
 <template>
   <div id="app">
     <div class="bar">
-      <Sidebar @changePage="sendPage" />
+      <Sidebar @emitPage="emitPage" />
     </div>
-    <div class="main"><component :is="currentComponent" /></div>
-    <Mokuhyou />
-    <div class="mainContent"></div>
+    <div class="main">
+      <page :select="select" :close="sidebarClose" />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, shallowRef } from "vue";
+import { ref } from "vue";
 import Sidebar from "./components/sidebar.vue";
-import Profile from "./components/myPages/profile.vue";
-import Mokuhyou from "./components/myPages/mokuhyou.vue";
-import Opus from "./components/myPages/opus.vue";
-import Career from "./components/myPages/career.vue";
-import TelephoneNumber from "./components/myPages/telephoneNumber.vue";
-const currentComponent = shallowRef(Profile);
-
-function sendPage(page) {
-  switch (page) {
-    case "プロフィール":
-      currentComponent.value = Profile;
+import page from "./components/page.vue";
+const select = ref("プロフィール");
+const sidebarClose = ref(false);
+const emitPage = (info) => {
+  switch (info.type) {
+    case "changePage":
+      select.value = info.value;
       break;
-    case "経歴":
-      currentComponent.value = Mokuhyou;
+    case "close":
+      sidebarClose.value = info.value;
       break;
-    case "作品":
-      currentComponent.value = Opus;
-      break;
-    case "今後の目標":
-      currentComponent.value = Career;
-      break;
-    case "電話番号":
-      currentComponent.value = TelephoneNumber;
-      break;
+    default:
+      return;
   }
-}
+};
 </script>
 
 <style>
@@ -45,11 +34,10 @@ function sendPage(page) {
   display: flex;
 }
 .bar {
-  z-index: 2;
+  z-index: 11;
+  position: fixed;
 }
-
-.mainContent {
+.main {
   flex: 1;
-  padding: 20px;
 }
 </style>
