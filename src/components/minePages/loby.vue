@@ -1,13 +1,12 @@
 <template>
   <div class="parent">
-    <DIV class="test"></DIV>
+    <div class="test"></div>
     <div :style="{ zIndex: zIndex }" class="title" ref="titleRef">
       <textanm text="AZUMA" /> <textanm text="portfolio" />
     </div>
 
     <img src="/image/backgrownd.png" alt="backgrownd" class="backgrowndImage" />
     <div class="fadeout"><fadeout /></div>
-
     <div class="iconbox">
       <iconLink
         v-for="(item, index) in icons"
@@ -20,6 +19,7 @@
   </div>
 </template>
 <script setup>
+import borderanm from "../effect/borderanm.vue";
 import { ref, onMounted } from "vue";
 import fadeout from "../effect/fadeout.vue";
 import textanm from "../effect/textanm.vue";
@@ -90,6 +90,7 @@ onMounted(() => {
   z-index: 40;
   display: flex;
   font-size: 145px;
+  font-family: Impact;
   flex-direction: column;
 }
 

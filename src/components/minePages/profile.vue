@@ -3,28 +3,35 @@
     <img src="/image/minepict.png" alt="backgrownd" class="minepict" />
 
     <div class="texts">
-      <div class="title">{{ "Profile" }}</div>
+      <pagetitle text="Profile" />
       <div class="text">
-        <slide profileText="<h3>名前</h3> 　東晃平`" />
-        <slide profileText="<h3>所属</h3> 　NS高等学校`" />
-        <slide profileText="<h3>星座</h3> 山羊座　`" />
-        <slide profileText="<h3>好きなもの</h3> 　雰囲気ゲー`" />
+        <slide subtitle="名前" text="東晃平" />
+        <slide subtitle="所属" text="NS高2年" />
+        <slide subtitle="星座" text="山羊座" />
+        <slide subtitle="趣味" text="兵站学" />
       </div>
     </div>
   </div>
 </template>
 <script setup>
+import pagetitle from "../part/pagetitle.vue";
 import { ref } from "vue";
 import slide from "../effect/slide.vue";
 </script>
 <style scoped>
 .texts {
-  width: 48vw;
+  position: absolute;
+  padding: 10px;
+  background-color: #ffffff;
+  width: 30vw;
   height: 100vh;
+  right: 0vh;
+  opacity: 0.5;
 }
 .minepict {
-  width: 50vw;
-  height: 100vh;
+  position: absolute;
+  width: auto;
+  height: auto;
 }
 .title {
   font-size: 80px;
@@ -40,7 +47,7 @@ import slide from "../effect/slide.vue";
 }
 
 .parent {
-  background-color: #ffffff;
+  position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;

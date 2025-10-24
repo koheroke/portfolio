@@ -9,25 +9,34 @@ const props = defineProps({ text: String });
 const textEl = ref(null);
 
 onMounted(() => {
-  const container = textEl.value;
-  container.textContent = "";
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        const container = textEl.value;
+        container.textContent = "";
 
-  props.text.split("").forEach((char, i) => {
-    const outer = document.createElement("span");
-    outer.style.display = "inline-block";
-    outer.style.overflow = "hidden";
+        props.text.split("").forEach((char, i) => {
+          const outer = document.createElement("span");
+          outer.style.display = "inline-block";
+          outer.style.overflow = "hidden";
 
-    const inner = document.createElement("span");
-    inner.textContent = char;
-    inner.style.display = "inline-block";
-    inner.style.transform = "translateY(100%)";
-    inner.style.opacity = "0";
-    inner.style.animation = `showText 0.5s forwards`;
-    inner.style.animationDelay = `${i * 0.2}s`;
+          const inner = document.createElement("span");
+          inner.textContent = char;
+          inner.style.display = "inline-block";
+          inner.style.transform = "translateY(100%)";
+          inner.style.opacity = "0";
+          inner.style.animation = `showText 0.5s forwards`;
+          inner.style.animationDelay = `${i * 0.2}s`;
 
-    outer.appendChild(inner);
-    container.appendChild(outer);
-  });
+          outer.appendChild(inner);
+          container.appendChild(outer);
+        });
+      } else {
+      }
+    },
+    { threshold: 0.8 }
+  );
+  if (textEl.value) observer.observe(textEl.value);
 });
 </script>
 
@@ -39,6 +48,5 @@ onMounted(() => {
   }
 }
 .top-ttl {
-  font-family: Impact;
 }
 </style>

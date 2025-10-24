@@ -1,6 +1,6 @@
 <template>
   <div class="barParent" :class="{ closing: isClosing, opening: isOpening }">
-    <div class="sidebarText">HOME</div>
+    <div class="sidebarText">MENU</div>
     <div class="sidebarItems">
       <v-container>
         <div v-for="item in items" :key="item.text">
@@ -58,8 +58,8 @@ let thisItem = null;
 const items = ref([
   { text: "ホーム", color: "#d5cbcb1f", class: "loby" },
   { text: "プロフィール", color: "#d5cbcb1f", class: "profile" },
-  { text: "経歴", color: "#d5cbcb1f", class: "profile" },
-  { text: "スキル", color: "#d5cbcb1f", class: "profile" },
+  { text: "スキル", color: "#d5cbcb1f", class: "skill" },
+  { text: "経歴", color: "#d5cbcb1f", class: "career" },
   { text: "作品", color: "#d5cbcb1f", class: "opus" },
 ]);
 
@@ -94,7 +94,6 @@ function redirectIcon(langage) {
   height: 8%;
   background-color: #f0eeee;
   clip-path: polygon(0 100%, 0 0, 40% 0, 50% 40%, 50% 60%, 40% 100%);
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,18 +108,17 @@ function redirectIcon(langage) {
   box-shadow: 0 4px 10px rgba(1, 1, 1, 1.5);
   width: 275px;
   height: 100vh;
-  background-color: #ffbd59;
+  background-color: #000000;
 }
 .sidebarText {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 10px (255, 255, 255, 0.5);
   position: absolute;
   left: 50%;
   top: 3%;
   transform: translate(-50%, 0%);
-  width: 51%;
   height: 8%;
-  color: black;
-  font-family: "Hiragino Sans", "ヒラギノ角ゴシック";
+  color: white;
+  font-family: "Impact";
   font-weight: 900;
   font-weight: bold;
   font-size: 40px;

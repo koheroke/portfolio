@@ -1,6 +1,9 @@
 <template>
   <div style="padding-top: 10px">
-    <div ref="box" class="box" v-html="props.profileText"></div>
+    <div ref="box" class="box">
+      {{ props.subtitle }}
+      {{ props.text }}
+    </div>
   </div>
 </template>
 
@@ -8,7 +11,7 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const box = ref(null);
-const props = defineProps({ profileText: String });
+const props = defineProps({ subtitle: String, text: String });
 
 onMounted(() => {
   const observer = new IntersectionObserver(
@@ -31,6 +34,12 @@ onMounted(() => {
 
 <style>
 .box {
+  font-size: 30px;
+  font-weight: bold;
+  width: 300px;
+  height: 100px;
+  color: black;
+  font-family: "Hiragino Sans", "ヒラギノ角ゴシック";
   opacity: 0;
   transform: translateX(180px);
   transition: opacity 0.3s, transform 0.3s;

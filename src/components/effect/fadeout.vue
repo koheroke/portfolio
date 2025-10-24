@@ -24,13 +24,17 @@ onMounted(() => {
   pointer-events: none;
 }
 
-/* Vue標準トランジションのクラス構成 */
-.slow-fade-enter-active,
+.slow-fade-enter-active {
+  transform: translate(0%, 0%);
+}
 .slow-fade-leave-active {
   transition: opacity 1.5s ease-in-out;
 }
 
-.slow-fade-enter-from,
+.slow-fade-enter-from {
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
 .slow-fade-leave-to {
   opacity: 0;
 }
