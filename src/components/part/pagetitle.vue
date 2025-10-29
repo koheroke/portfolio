@@ -12,6 +12,6 @@ const title = defineProps({
   font-size: 80px;
   font-family: Impact;
   z-index: 10;
-  color: rgb(70, 69, 69);
+  opacity: 1;
 }
 </style>

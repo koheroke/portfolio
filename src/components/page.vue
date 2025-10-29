@@ -3,7 +3,6 @@
     <div class="loby"><Loby /></div>
     <div class="profile"><Profile /></div>
     <div class="skill"><Skill /></div>
-    <div class="career"><Career @scrollManeger="scrollBool" /></div>
     <div class="ops"><Opus /></div>
     <div class="underbar"><underbar /></div>
   </div>
@@ -13,11 +12,11 @@
 import { ref, shallowRef, watch, onMounted } from "vue";
 import Profile from "./minePages/profile.vue";
 import Opus from "./minePages/opus.vue";
-import Career from "./minePages/career.vue";
 import Loby from "./minePages/loby.vue";
 import underbar from "./minePages/underbar.vue";
 import Skill from "./minePages/skill.vue";
 import { ScrollManager } from "../jsModule/scrollManege";
+
 const scrollManager = new ScrollManager();
 const parentDiv = ref(null);
 const sidebar = defineProps({
@@ -83,6 +82,7 @@ watch(
   width: 100vw;
   height: 100vh;
 }
+
 @keyframes movepage {
   0% {
     transform: translateY(0);

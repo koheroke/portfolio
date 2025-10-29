@@ -2,11 +2,10 @@
   <div class="parent" ref="pageParent">
     <div class="back"></div>
     <div class="titles">
-      <div class="main"><pagetitle text="Career"></pagetitle></div>
-      <div class="sub"><pagesubtitle text="これまでの経歴" /></div>
+      <div class="main"><pagetitle text="Careter"></pagetitle></div>
     </div>
     <div class="careers">
-      <careerBox pagetitle="中学" mainText="文章" />
+      <careerBox pagetitle="中学" mainText="" />
       <careerBox pagetitle="一年生" mainText="" /><careerBox
         pagetitle="二年生"
         mainText="文章"
@@ -15,11 +14,8 @@
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style></style>
+
 <script setup>
 import { onMounted, ref } from "vue";
 import careerBox from "../part/careerBox.vue";
@@ -51,7 +47,7 @@ onMounted(() => {
   background-color: white;
   color: black;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 }
 .titles {
   position: absolute;
@@ -62,9 +58,11 @@ onMounted(() => {
 }
 .sub {
   transform: translateX(-50%);
+  font-weight: bold;
 }
 .main {
-  transform: translateX(-30%);
+  transform: translateX(-50%);
+  font-weight: bold;
 }
 
 .back {
@@ -80,20 +78,20 @@ onMounted(() => {
 }
 .careers {
   position: absolute;
-  padding: 10%;
-  top: 15%;
-  display: flex;
+  overflow-x: auto;
+  top: 20%;
   gap: 60px;
-  z-index: 40;
+  z-index: 9;
+  display: flex;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
-.careers > *:nth-child(1) {
-  transform: translateY(0px);
+.careers::-webkit-scrollbar {
+  display: none;
 }
-.careers > *:nth-child(2) {
-  transform: translateY(25px);
-}
-.careers > *:nth-child(3) {
-  transform: translateY(50px);
+
+.careers > * {
+  flex: 0 0 auto;
 }
 </style>

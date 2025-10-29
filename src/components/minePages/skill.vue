@@ -1,7 +1,8 @@
 <template>
   <div class="anmBorder"></div>
   <div class="parent">
-    <pagetitle text="skill" />
+    <div class="title"><pagetitle text="skill" /></div>
+
     <div class="skills" ref="skills">
       <div class="thisskill">
         <skillBox
@@ -12,7 +13,7 @@
       <div class="thisskill">
         <skillBox
           text="基本的なテンプレート構文での動的UIの作成や、複数コンポーネントの連携やRouter、API通信を使ったweb制作ができます"
-          image="/image/icon/logo.svg"
+          image="/image/icon/logo.png"
         ></skillBox>
       </div>
       <div class="thisskill">
@@ -63,16 +64,16 @@ function leftscroll() {
   padding: 10px;
   background-color: beige;
 }
+
 .skills {
+  position: absolute;
   overflow-x: auto;
   scrollbar-width: none;
   scroll-behavior: smooth;
-  position: absolute;
-  left: 7%;
-  width: 83vw;
-  padding: 10px;
+  top: 20%;
+  width: 80vw;
+  left: 10vw;
   display: flex;
-  background-color: beige;
   height: 80vh;
   gap: 10px;
 }
@@ -89,14 +90,21 @@ function leftscroll() {
   background-color: #000000;
   transition: transform 0.2s;
 }
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
 
 .arrow-notchright {
-  left: 90%;
+  right: 0;
   clip-path: polygon(0 100%, 0 0, 40% 0, 50% 40%, 50% 60%, 40% 100%);
 }
 
 .arrow-notchleft {
-  left: 4%;
+  left: 0;
+  transform: translateX(-25%);
   clip-path: polygon(100% 100%, 100% 0, 60% 0, 50% 40%, 50% 60%, 60% 100%);
 }
 

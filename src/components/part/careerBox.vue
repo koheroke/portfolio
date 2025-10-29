@@ -1,4 +1,8 @@
 <template>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes"
+  />
   <div class="careerBox">
     <div class="titleBox">
       <textanm :text="carrers.pagetitle" />
@@ -30,7 +34,7 @@ import fadeout2 from "../effect/fadeout2.vue";
   left: 50%;
   transform: translate(-50%, 10%);
   font-size: 50px;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Hiragino Sans", "ヒラギノ角ゴシック";
 }
 .anmBox {
   position: absolute;
@@ -40,12 +44,16 @@ import fadeout2 from "../effect/fadeout2.vue";
 }
 .fadeout2 {
   position: absolute;
-  z-index: 20;
+  z-index: 8;
   width: 100%;
   height: 100%;
 }
 .textbox {
+  font-family: "Hiragino Sans", "ヒラギノ角ゴシック";
+  padding: 10px;
   position: absolute;
+  font-size: 20px;
   font-weight: bold;
+  background-color: rgb(255, 255, 255, 0.5);
 }
 </style>

@@ -1,25 +1,37 @@
 <template>
   <transition name="slow-fade">
-    <div v-if="show" class="fadeObj"></div>
+    <div v-if="show" class="fadeObj" ref="refFade"></div>
   </transition>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 const show = ref(true);
-
-onMounted(() => {
-  setTimeout(() => {
-    show.value = false;
-  }, 1500);
+const refFade = ref(null);
+const anmbood = defineProps({
+  act: Boolean,
+  color: String,
 });
+onMounted(() => {
+  refFade.value.style.backgroundColor = anmbood.color;
+});
+
+watch(
+  () => anmbood.act,
+  async (newval) => {
+    if (newval == true) {
+      show.value = false;
+    }
+  }
+);
 </script>
 
 <style scoped>
 .fadeObj {
   background-color: white;
-  width: 100vw;
-  height: 100vh;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
   opacity: 1;
   pointer-events: none;
 }

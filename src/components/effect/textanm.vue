@@ -3,11 +3,19 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, onBeforeUnmount, watch } from "vue";
 
-const props = defineProps({ text: String });
+const props = defineProps({ text: String, act: Boolean });
 const textEl = ref(null);
 
+watch(
+  () => props.act,
+  async (newval) => {
+    if (newval == true) {
+      show.value = false;
+    }
+  }
+);
 onMounted(() => {
   const observer = new IntersectionObserver(
     ([entry]) => {
@@ -30,13 +38,16 @@ onMounted(() => {
 
           outer.appendChild(inner);
           container.appendChild(outer);
+          observer.unobserve(entry.target);
         });
-      } else {
       }
     },
     { threshold: 0.8 }
   );
   if (textEl.value) observer.observe(textEl.value);
+  onBeforeUnmount(() => {
+    if (textEl.value) observer.unobserve(textEl.value);
+  });
 });
 </script>
 

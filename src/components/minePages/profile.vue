@@ -1,10 +1,10 @@
 <template>
   <div class="parent">
-    <img src="/image/minepict.png" alt="backgrownd" class="minepict" />
+    <img src="/image/minepict.png" alt="background" class="minepict" />
 
     <div class="texts">
-      <pagetitle text="Profile" />
       <div class="text">
+        <pagetitle text="Profile" />
         <slide subtitle="名前" text="東晃平" />
         <slide subtitle="所属" text="NS高2年" />
         <slide subtitle="星座" text="山羊座" />
@@ -20,18 +20,20 @@ import slide from "../effect/slide.vue";
 </script>
 <style scoped>
 .texts {
+  margin: 2.5vh;
   position: absolute;
   padding: 10px;
-  background-color: #ffffff;
-  width: 30vw;
-  height: 100vh;
-  right: 0vh;
-  opacity: 0.5;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 350px;
+  height: 95vh;
+  right: 1vw;
 }
+
 .minepict {
   position: absolute;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .title {
   font-size: 80px;

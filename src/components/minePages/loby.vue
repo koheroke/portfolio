@@ -5,8 +5,8 @@
       <textanm text="AZUMA" /> <textanm text="portfolio" />
     </div>
 
-    <img src="/image/backgrownd.png" alt="backgrownd" class="backgrowndImage" />
-    <div class="fadeout"><fadeout /></div>
+    <img src="/image/background.png" alt="background" class="backgroundImage" />
+    <div class="fadeout"><fadeout :act="fadeoutbool" /></div>
     <div class="iconbox">
       <iconLink
         v-for="(item, index) in icons"
@@ -26,7 +26,13 @@ import textanm from "../effect/textanm.vue";
 import iconLink from "../icons/iconLink.vue";
 const zIndex = ref(30);
 const titleRef = ref(null);
+const fadeoutbool = ref(false);
 
+onMounted(() => {
+  setTimeout(() => {
+    fadeoutbool.value = true;
+  }, 1500);
+});
 const icons = ref([
   {
     src: "/image/icon/github.png",
@@ -70,28 +76,44 @@ onMounted(() => {
   right: 3%;
   width: auto;
   padding: 30px;
-  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 5px;
   z-index: 5;
   align-items: center;
   animation: floating-y 1.8s ease-in-out infinite alternate-reverse;
 }
 
-.title {
-  position: absolute;
-  color: black;
-  bottom: 10%;
-  left: 0%;
-  padding: 2px;
-  z-index: 40;
-  display: flex;
-  font-size: 145px;
-  font-family: Impact;
-  flex-direction: column;
+@media screen and (min-width: 281px) {
+  .title {
+    position: absolute;
+    color: black;
+    top: 0%;
+    left: 0%;
+    padding: 2px;
+    z-index: 40;
+    display: flex;
+    font-size: 145px;
+    font-family: Impact;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 520px) {
+  .title {
+    position: absolute;
+    color: black;
+    bottom: 10%;
+    top: 15%;
+    left: 0%;
+    padding: 2px;
+    z-index: 40;
+    display: flex;
+    font-size: 145px;
+    font-family: Impact;
+    flex-direction: column;
+  }
 }
 
 .text {
@@ -125,13 +147,15 @@ onMounted(() => {
   }
 }
 
-.backgrowndImage {
+.backgroundImage {
   position: absolute;
   left: 0%;
   top: 0%;
   width: 100vw;
   height: 100vh;
   z-index: 2;
+  filter: brightness(0.8);
+  object-fit: cover;
 }
 .icon {
   width: 80px;

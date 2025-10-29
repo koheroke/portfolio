@@ -30,7 +30,7 @@ function redirect() {
   transition: transform 0.2s;
 }
 .optbord:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .optimage {
@@ -56,6 +56,6 @@ function redirect() {
 
 .url:hover {
   color: rgb(94, 145, 160);
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 </style>
