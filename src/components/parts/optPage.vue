@@ -23,23 +23,21 @@
         </div>
       </div>
       <div class="info">{{ this_optData.optData.info }}</div>
-      <div class="fadeoutclass">
-        <fadeout :act="fadeoutbool" :color="color" />
+      <div class="loadanm">
+        <loadanm :act="loadanmAct" />
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import fadeout from "../effect/fadeout.vue";
+import loadanm from "../effect/loadanm.vue";
 import { ref, watch } from "vue";
-import Loadanm from "../../plugins/Loadanm";
 import mdiWindowClose from "../icons/mdiWindowClose.vue";
-import iconLink from "../icons/iconLink.vue";
+import iconLink from "./iconLink.vue";
 const refMovie = ref(null);
-const fadeoutbool = ref(false);
 const boxfind = ref(false);
 const pagefind = ref(false);
-const color = ref("#000000");
+const loadanmAct = ref(false);
 const this_optData = defineProps({
   optData: {
     type: Object,
@@ -55,16 +53,16 @@ function stop() {
 function close() {
   boxfind.value = false;
   pagefind.value = false;
+  loadanmAct.value = false;
   stop();
 }
 
 watch(
   () => this_optData.count,
-  async (newval) => {
+  async () => {
     boxfind.value = true;
     pagefind.value = true;
-    fadeoutbool.value = true;
-    await Loadanm();
+    loadanmAct.value = true;
   }
 );
 </script>
@@ -119,12 +117,16 @@ watch(
   height: 50px;
   display: inline-block;
 }
-.fadeoutclass {
+.loadanm {
   z-index: 100;
   position: absolute;
+  pointer-events: none;
   top: 0%;
   left: 0%;
   width: 100%;
   height: 100%;
+  font-size: 60px;
+  font-family: impact;
+  color: white;
 }
 </style>

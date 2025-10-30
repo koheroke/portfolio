@@ -2,9 +2,9 @@
   <div class="parent">
     <div class="test"></div>
     <div :style="{ zIndex: zIndex }" class="title" ref="titleRef">
-      <textanm text="AZUMA" /> <textanm text="portfolio" />
+      <textanm text="AZUMA" :act="textanmAct" />
+      <textanm text="portfolio" :act="textanmAct" />
     </div>
-
     <img src="/image/background.png" alt="background" class="backgroundImage" />
     <div class="fadeout"><fadeout :act="fadeoutbool" /></div>
     <div class="iconbox">
@@ -19,14 +19,17 @@
   </div>
 </template>
 <script setup>
-import borderanm from "../effect/borderanm.vue";
 import { ref, onMounted } from "vue";
 import fadeout from "../effect/fadeout.vue";
 import textanm from "../effect/textanm.vue";
-import iconLink from "../icons/iconLink.vue";
+import iconLink from "../parts/iconLink.vue";
 const zIndex = ref(30);
 const titleRef = ref(null);
 const fadeoutbool = ref(false);
+const textanmAct = ref(false);
+onMounted(() => {
+  textanmAct.value = true;
+});
 
 onMounted(() => {
   setTimeout(() => {

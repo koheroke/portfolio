@@ -1,6 +1,6 @@
 <template>
   <transition name="slow-fade">
-    <div v-if="show" class="fadeObj" ref="refFade"></div>
+    <div v-show="show" class="fadeObj" ref="refFade"></div>
   </transition>
 </template>
 
@@ -10,6 +10,7 @@ const show = ref(true);
 const refFade = ref(null);
 const anmbood = defineProps({
   act: Boolean,
+  resetAnm: Boolean,
   color: String,
 });
 onMounted(() => {
@@ -17,9 +18,19 @@ onMounted(() => {
 });
 
 watch(
+  () => anmbood.resetAnm,
+  async (newval) => {
+    if (newval == true) {
+      console.log("show.value = true;");
+      show.value = true;
+    }
+  }
+);
+watch(
   () => anmbood.act,
   async (newval) => {
     if (newval == true) {
+      console.log("show.value = false;");
       show.value = false;
     }
   }
@@ -36,18 +47,18 @@ watch(
   pointer-events: none;
 }
 
-.slow-fade-enter-active {
-  transform: translate(0%, 0%);
-}
 .slow-fade-leave-active {
   transition: opacity 1.5s ease-in-out;
 }
 
 .slow-fade-enter-from {
   opacity: 0;
-  transform: translate(-50%, -50%);
 }
 .slow-fade-leave-to {
   opacity: 0;
+}
+.slow-fade-enter-to {
+  opacity: 1;
+  z-index: 200;
 }
 </style>

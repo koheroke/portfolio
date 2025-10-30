@@ -40,9 +40,9 @@
   </div>
 </template>
 <script setup>
-import skillBox from "../part/skillBox.vue";
+import skillBox from "../parts/skillBox.vue";
 import { ref } from "vue";
-import pagetitle from "../part/pagetitle.vue";
+import pagetitle from "../parts/pagetitle.vue";
 const skills = ref(null);
 let totalscroll = 0;
 function rightscroll() {

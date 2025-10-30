@@ -20,9 +20,9 @@
 </template>
 <script setup>
 import { ref } from "vue";
-import pagetitle from "../part/pagetitle.vue";
-import optBord from "../part/optBord.vue";
-import optsPage from "../subpages/optsPage.vue";
+import pagetitle from "../parts/pagetitle.vue";
+import optBord from "../parts/optBord.vue";
+import optsPage from "../parts/optPage.vue";
 const count = ref(0);
 const optData = ref({
   name: "",
@@ -63,7 +63,6 @@ const opts = ref([
 function redirect(opt) {
   count.value++;
   optData.value = optDatas[opt];
-  console.log(optData.value);
 }
 </script>
 

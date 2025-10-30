@@ -60,7 +60,6 @@ onMounted(() => {
   background-color: #000000;
 }
 
-/* 縦線 */
 .stroke .border.right,
 .stroke .border.left {
   width: 4px;

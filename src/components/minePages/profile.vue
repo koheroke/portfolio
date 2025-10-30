@@ -14,8 +14,7 @@
   </div>
 </template>
 <script setup>
-import pagetitle from "../part/pagetitle.vue";
-import { ref } from "vue";
+import pagetitle from "../parts/pagetitle.vue";
 import slide from "../effect/slide.vue";
 </script>
 <style scoped>

@@ -15,9 +15,6 @@ const skill = defineProps({
   text: String,
   image: String,
 });
-onMounted(() => {
-  console.log(skill.image);
-});
 </script>
 <style scoped>
 .image {

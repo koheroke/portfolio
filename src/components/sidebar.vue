@@ -59,7 +59,6 @@ const items = ref([
   { text: "ホーム", color: "#d5cbcb1f", class: "loby" },
   { text: "プロフィール", color: "#d5cbcb1f", class: "profile" },
   { text: "スキル", color: "#d5cbcb1f", class: "skill" },
-  { text: "経歴", color: "#d5cbcb1f", class: "career" },
   { text: "作品", color: "#d5cbcb1f", class: "opus" },
 ]);
 
